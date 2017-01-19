@@ -1,0 +1,205 @@
+//- Go to index.jade to find the mixins
+	dependancies
+	------------------------------------------
+-
+	stats = {
+		audience: [
+			{
+				use: '#icon-user-outline',
+				data: '40MM',
+				label: 'Registered Users',
+				source: 'First Party Data'
+			},
+			{
+				use: '#icon-visitors-solid',
+				data: '45MM',
+				label: 'Unique Visitors Per Month',
+				source: 'Quantcast 2016'
+			}
+		],
+		audienceRanges: [
+			{
+				age: '13–24',
+				value: 197
+			},
+			{
+				age: '13–34',
+				value: 169
+			},
+			{
+				age: '18–34',
+				value: 173
+			},
+			{
+				age: '18–49',
+				value: 144
+			}
+		],
+		engagement: [
+			{
+				use: '#icon-page-views-outline',
+				data: '1.6 Billion',
+				label: 'Monthly Page Views',
+				source: 'Google Analytics 2016'
+			},
+			{
+				use: '#icon-comments-outline',
+				data: '1 Million',
+				label: 'Comments Daily',
+				source: 'First Party Data'
+			},
+			{
+				use: '#icon-time-outline',
+				data: '9 Minutes',
+				label: 'Average Time Spent',
+				source: 'Google Analytics 2016'
+			},
+			{
+				use: '#icon-pages-outline',
+				data: '11 Pages Per Session',
+				label: 'Average Content Consumption',
+				source: 'Google Analytics 2016'
+			}
+		],
+		social: [
+			{ use: '#logo-google', 		data: '8 Million' 	},
+			{ use: '#logo-facebook', 	data: '2.1 Million' },
+			{ use: '#logo-pintrest',	data: '1.3 Million' },
+			{ use: '#logo-twitter',		data: '1.1 Million' },
+			{ use: '#logo-instagram',	data: '369,000' 	},
+			{ use: '#logo-tumblr',		data: '289,000' 	}
+		]
+	}
+
+//-
+	Logo Wall properties
+	All logo svgs are in the src/img/assets.svg as vector paths
+-
+	brands = [
+		{ prop: '20th Century Fox' },
+		{ prop: '2K Games' },
+		{ prop: 'Adidas' },
+		{ prop: 'Adult Swim' },
+		{ prop: 'Art Institute' },
+		{ prop: 'Bandai' },
+		{ prop: 'Blizzard' },
+		{ prop: 'Canon' },
+		{ prop: 'DC Comics' },
+		{ prop: 'Dell' },
+		{ prop: 'Disney' },
+		{ prop: 'Dodge' },
+		{ prop: 'Dr Pepper' },
+		{ prop: 'EA' },
+		{ prop: 'FDA' },
+		{ prop: 'Fiat' },
+		{ prop: 'Focus Features' },
+		{ prop: 'GKIDS' },
+		{ prop: 'HBO' },
+		{ prop: 'Lexus' },
+		{ prop: 'Lifetime' },
+		{ prop: 'Mattel' },
+		{ prop: 'Mentos' },
+		{ prop: 'Microsoft' },
+		{ prop: 'New Era' },
+		{ prop: 'Nikkon' },
+		{ prop: 'Nintendo' },
+		{ prop: 'Pepsi' },
+		{ prop: 'Redbull' },
+		{ prop: 'Rockstar' },
+		{ prop: 'Sony' },
+		{ prop: 'Square Enix' },
+		{ prop: 'Starbucks' },
+		{ prop: 'Studio Ghibli' },
+		{ prop: 'Toshiba' },
+		{ prop: 'Truth' },
+		{ prop: 'Ubisoft' },
+		{ prop: 'Universal' },
+		{ prop: 'Verizon' },
+		{ prop: 'Wacom' },
+		{ prop: 'Warner Bros' },
+		{ prop: 'We Chat' }
+	]
+
+//- [data-nav] attribute will append section as a nav link in the header bar
+
+section.stats(data-nav='Audience')
+
+	//- Audience
+	//- ------------------------------------------
+	.stat-audience.stat-module
+		+subtitle('Audience')
+		.wrap.clear
+			each stat, i in stats.audience
+				.col-5(class=(i === 0 ? 'before-1': 'after-1'))
+					.stat
+						svg.crop-tier-2(viewBox='0 0 240 381'): use(xlink:href='#crop-tier-2')
+						.txt
+							.icon(data-anim='audience')
+								+svg({ use: stat.use, viewBox: '0 0 64 64' })
+							.data
+								strong(data-anim='audience')= stat.data
+								span(data-anim='audience')= stat.label
+								.source(data-anim='audience') Source: #{stat.source}
+
+	//- Audience Index
+	//- ------------------------------------------
+	.stat-audience-index.stat-module
+		each stat, i in stats.audienceRanges
+			if i === 0
+				.wrap.clear.row
+					.col-1.before-1: span.label.txt-age(data-anim='audience-index') Age
+					.col-1.before-8: span.label.txt-index(data-anim='audience-index') Index
+			.wrap.clear.row
+				.col-1.before-1: span.txt-age(data-anim='audience-index')= stat.age
+				.col-8
+					.bg: .range: .value(style='width: ' + stat.value + '%')
+				.col-1.after-1: span.txt-index(data-anim='audience-index')= stat.value
+		.wrap.clear
+			.col-8.before-2.after-2
+				.average
+					.range(data-anim='audience-index'): span US Average Index: 100
+				.source(data-anim='audience-index') Source: ComScore 2016
+
+	//- Engagement
+	//- ------------------------------------------
+	.stat-engagement.stat-module
+		+subtitle('Engagement')
+		.wrap.clear
+			.col-10.before-1.after-1.row
+				each stat in stats.engagement
+					.col(data-anim='engagement')
+						.stat: .txt
+							.icon
+								+svg({ use: stat.use, viewBox: '0 0 64 64' })
+							.data
+								strong= stat.data
+								span= stat.label
+								.source Source: #{stat.source}
+
+	//- Social Presence
+	//- ------------------------------------------
+	.stat-social-presence.stat-module
+		+subtitle('Social Presence')
+		.wrap.clear
+			.col-10.before-1.after-1.row
+				each stat, i in stats.social
+					.stat: .txt
+						.icon
+							+svg({ use: stat.use, viewBox: '0 0 192 70' })
+						.data
+							//- Add tiny crop to the first and last data
+							if i === 0 || i === stats.social.length - 1
+								svg.crop-tier-2(viewBox='0 0 240 381'): use(xlink:href='#crop-tier-2')
+							strong= stat.data
+							span Followers
+
+
+	//- Brands
+	//- ------------------------------------------
+	.stat-brands.stat-module
+		+subtitle('Brands We’ve Worked With')
+		.wrap.clear
+			each logo in brands
+				- file = '#logo-' + logo.prop.toLowerCase().replace(/\W+/g, '-')
+				.col-2.brands-item
+					+svg({ use: file, viewBox: '0 0 230 110', className: 'brands-logo' })

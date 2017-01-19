@@ -1,0 +1,77 @@
+//- Go to index.jade to find the mixins
+	dependancies
+	------------------------------------------
+
+-
+	brandValues = [
+		{
+			title: 'Audacious',
+			desc: [
+				'What these deviants do is',
+				'— they reach into our community to create and empower projects and ideas that haven’t been done before, oftentimes that haven’t yet been dreamed of.'
+			],
+			artist: 'http://marcsimonetti.deviantart.com/art/dance-with-dragons-by-GRR-MARTIN-295424142'
+		},
+		{
+			title: 'Kindred',
+			desc: [
+				'They’re',
+				'spirits, connecting with people on multiple levels.'
+			],
+			artist: 'http://threepwoody.deviantart.com/art/The-Gang-489160127'
+		},
+		{
+			title: 'Magnetic',
+			desc: [
+				'They are a',
+				'force that draws other community members in, gets them involved, and keeps everyone feeling like they belong.'
+			],
+			artist: 'http://detkef.deviantart.com/art/A-merry-song-522716900'
+		},
+		{
+			title: 'Inspired',
+			desc: [
+				'They’re',
+				'to create and do more, and to uplift others to do the same.',
+			],
+			artist: 'http://cestica.deviantart.com/art/THOUGHTS-437831738'
+		}
+	]
+
+section.about-us(data-nav='About Us')
+
+		.brand-pillars
+			.wrap.clear
+				.col-8.before-1
+					h2.title.crop(data-txt) Audacious, Kindred, Magentic, Inspired
+			.wrap.clear
+				.col-6.before-1
+					.brand-txt
+						p(data-txt) Founded in 2000, DeviantArt is the leading online community and social network for artists and visual enthusiasts. The company aggregates and distributes more original artist-generated content than any other site. It offers artists and fans of all interests an opportunity to communicate through art, share their passions for pop culture, and engage as part of a global collective.
+						p(data-txt) #[a.link(href='http://spyed.deviantart.com/journal/Boldly-Facing-The-Future-498282387', target='_blank') Learn About Our Story]
+
+		.brand-values
+			.wrap.clear
+				.col-10.before-1
+					each value in brandValues
+
+						- title = value.title.toLowerCase()
+
+							.brand-value(data-value=title)
+								.icon: +svg({ use: '#icon-finger-tap', viewBox: '0 0 64 64' })
+								.brand-values-bg
+									+image({
+										clip: true,
+										class: 'brand-value-' + title,
+										asBackground: true,
+										src: 'brand-values-' + title + '.jpg',
+										artist: value.artist
+									})
+								.brand-values-desc
+									.brand-values-txt
+										each desc, i in value.desc
+											if i === 0
+												p(data-txt)= desc
+												h2.title.crop(data-txt)= value.title
+											if i === 1
+												p(data-txt)= desc

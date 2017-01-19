@@ -1,0 +1,117 @@
+//- Global Variables
+	------------------------------------------
+- development = true
+- cache = '?v=' + (new Date()).getTime()
+
+//- ------------------------------------------
+	+svg({
+		viewBox,
+		use
+	})
+
+mixin svg(o)
+	- className = o.className === undefined ? '' : ' ' + o.className
+	svg(viewBox=o.viewBox, class=o.use.replace(/[#]/g, '') + className)
+		use(xlink:href=o.use)
+
+//- ------------------------------------------
+	+subtitle(string)
+
+mixin subtitle(title)
+	.wrap.clear
+		.col-10.before-1.after-1
+			h3.sub-title.crop(data-txt)= title
+			if block
+				block
+
+//- ------------------------------------------
+	+img({ src })
+
+mixin img(src)
+	img(src='src/img/' + src + cache, alt=src.toLowerCase())
+
+//- ------------------------------------------
+	+caption({ artist })
+
+mixin caption(url)
+	if url
+		- user 		= url.match(/[a-z-0-9]+(?=.deviantart)/ig)[0]
+		- profile 	= url.match(/\w.+(?=\/journal|\/art)/ig)
+		- id 		= url.match(/\d+$/ig).join('')
+		- title 	= url.match(/(?!.+\/)\w+(?!\d)./ig)
+	figcaption
+		hr
+		span.name Artwork #[a(href=url, target='_blank')= user]
+
+//- ------------------------------------------
+	+image({
+		class,
+		src
+	})
+
+mixin image(o)
+
+	- dataClip = (!o.clip) ? false : true
+
+	if !o.asBackground
+		figure(class=o.class, data-clip=dataClip)
+			if o.artist
+				+caption(o.artist)
+			.image: +img(o.src)
+	else
+		figure(style='background-image: url(src/img/' + o.src + cache + ')', class=(o.class === undefined ? '' : o.class), data-clip=dataClip)
+			if o.artist
+				+caption(o.artist)
+
+//- ------------------------------------------
+	+video(src)
+
+mixin video(src, className)
+	video(muted='muted', loop='loop', class=className)
+		source(src='src/video/' + src + cache, type='video/mp4')
+
+doctype html
+html(lang='en-us')
+	head
+		meta(charset='UTF-8')
+		meta(http-equiv='X-UA-Compatible', content='IE=Edge')
+		meta(name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no')
+
+		title DeviantArt Media Kit
+
+		link(rel='stylesheet', type='text/css', href='index-min.css' + cache)
+		link(href='favicon.ico' rel='shortcut icon')
+
+		//- Google recaptcha
+		script(src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit' async defer)
+		script.
+			var onloadCallback = function(){
+				grecaptcha.render('html_element', {
+					'sitekey' : '6LfY4AoUAAAAANsvdGDwwIQu0jkjidFpsK8JwO2g',
+					'callback' : correctCaptcha,
+					'theme' : 'dark'
+				});
+			};
+			var correctCaptcha = function(response) {
+				var submitButton = document.getElementById('insightly_Submit');
+					submitButton.removeAttribute('disabled');
+			};
+	body
+		#media-kit
+			if development
+				include ../img/assets.svg
+			else
+				include ../img/assets-min.svg
+			include nav
+			include sections/welcome
+			include sections/stats
+			include sections/brand-alignment
+			include sections/brand-partnerships
+			include sections/influencers
+			include sections/about-us-v2
+			include sections/contact
+			#logo-type: +svg({ use: '#logo-type', viewBox: '0 0 592 204' })
+		script(
+			src='src/js/libs/require.js' + cache,
+			data-main=(development ? 'src/js/index' : 'index-min')
+		)

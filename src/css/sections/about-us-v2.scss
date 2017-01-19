@@ -1,0 +1,144 @@
+section.about-us {
+
+	position: relative;
+	background: $color-secondary-black;
+	padding-top: $nav-height;
+	padding-bottom: 60px;
+	min-height: 100vh;
+
+	@include bp(0) {
+		padding-top: $nav-height /2;
+		min-height: 0;
+		padding: 30px 0 0;
+	}
+
+	.sub-title {
+		color: $color-primary-green;
+	}
+
+	p {
+		color: white;
+	}
+
+	a {
+		color: white;
+	}
+
+	a.link {
+		color: white;
+		&:after {
+			background: $color-green-4;
+		}
+
+	}
+
+	.brand-value-imgs {
+		position: relative;
+		margin: 0 30% 60px 0;
+		overflow: hidden;
+
+		svg.crop-tier-2 {
+			position: absolute;
+			width: 60px;
+			bottom: 0;
+			right: 0;
+			fill: $color-secondary-black;
+			z-index: 1337;
+		}
+	}
+
+	.brand-value-imgs-wrap {
+		width: 100%;
+		position: relative;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		padding-bottom: 42%;
+	}
+
+	.brand-value-img {
+		background: black;
+		position: absolute;
+		top: 0; bottom: 0; left: 0;
+		width: 100%;
+		overflow: hidden;
+
+		svg {
+			width: 100%;
+			position: relative;
+			transform: translate(0, -50%);
+			top: 50%;
+		}
+
+		figure {
+			position: absolute;
+			top: 0; right: 0; bottom: 0; left: 0;
+			background: transparent 50% 50%/cover no-repeat;
+			@include bp(0) {
+				top: 0; right: 0; bottom: 0; left: 0;
+			}
+			hr {
+				display: none;
+			}
+		}
+
+		figcaption {
+			@include bp(0) {
+				transition: all 1s $ease-out-p0;
+				transform: translate(0, -200%);
+				opacity: 0;
+				left: 10%;
+			}
+		}
+	}
+
+
+	.brand-value-img figure.brand-value-audacious {
+		background-position: 50% 100%;
+	}
+
+	.brand-value-img figure.brand-value-inspired {
+		background-position: 50% 100%;
+	}
+
+	//-Big Ass Title
+	.brand-values-big-title {
+		color: $color-primary-black;
+		font-size: 8vw;
+		margin: 0;
+		white-space: nowrap;
+		position: relative;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -25%);
+	}
+
+	.brand-value-copy-wrap {
+		width: 100%;
+	}
+
+	.brand-value-copy {
+		max-width: 420px;
+		position: absolute;
+		width: 100%;
+		top: 220px;
+		left: 60%;
+		z-index: 4;
+
+		h3.title {
+			color: $color-primary-green;
+			font-size: 3em;
+			margin: 15px 0;
+		}
+		p {
+			color: white;
+			margin: 0;
+		}
+		.brand-value-txt {
+			position: absolute;
+		}
+	}
+
+
+}

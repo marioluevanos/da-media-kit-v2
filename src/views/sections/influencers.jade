@@ -1,0 +1,155 @@
+//- Go to index.jade to find the mixins
+	dependancies
+	------------------------------------------
+-
+	profiles = [
+		{
+			artist: 'Yuumei',
+			tag: 'Artist <span></span> Professional <span></span> Varied',
+			watchers: '343K+',
+			pageviews: '18.9MM+',
+			deviations: '720+',
+			image: 'profiles-yuumei.jpg',
+			image_url: 'http://yuumei.deviantart.com/art/At-The-Crossroads-635813611',
+			avatar: 'profiles-yuumei-avatar.gif',
+			social: [
+				{
+					site: 'Facebook',
+					followers: '166K'
+				},
+				{
+					site: 'Twitter',
+					followers: '39.5K'
+				},
+				{
+					site: 'YouTube',
+					followers: '38.9K'
+				}
+			]
+		},
+		{
+			artist: 'MichelleHoefener',
+			tag: 'Illustrator <span></span> Concept Artist',
+			watchers: '59K+',
+			pageviews: '2.9MM+',
+			deviations: '150+',
+			image: 'profiles-michellehoefener.jpg',
+			image_url: 'http://michellehoefener.deviantart.com/art/Arcade-Miss-Fortune-League-of-Legends-476132936',
+			avatar: 'profiles-michellehoefener-avatar.png',
+			social: [
+				{
+					site: 'Twitter',
+					followers: '1.8K'
+				},
+				{
+					site: 'YouTube',
+					followers: '400'
+				}
+			]
+		},
+		{
+			artist: 'DanLuVisiArt',
+			tag: 'Artist <span></span> Professional <span></span> Digital Art',
+			watchers: '96K+',
+			pageviews: '7.4MM+',
+			deviations: '470+',
+			image: 'profiles-danluvisiart.jpg',
+			image_url: 'http://danluvisiart.deviantart.com/art/Gweedo-571310831',
+			avatar: 'profiles-danluvisiart-avatar.jpg',
+			social: [
+				{
+					site: 'Facebook',
+					followers: '43.8K'
+				},
+				{
+					site: 'Instagram',
+					followers: '125K'
+				}
+			]
+		},
+		{
+			artist: 'AbigailLarson',
+			tag: 'Artist <span></span> Professional <span></span> Digital Art',
+			watchers: '56K+',
+			pageviews: '1.6MM+',
+			deviations: '310+',
+			image: 'profiles-abigaillarson.jpg',
+			image_url: 'http://abigaillarson.deviantart.com/art/Snow-White-in-the-Woods-404796009',
+			avatar: 'profiles-abigaillarson-avatar.png',
+			social: [
+				{
+					site: 'Facebook',
+					followers: '20.6K'
+				},
+				{
+					site: 'Instagram',
+					followers: '22K'
+				}, {
+					site: 'Twitter',
+					followers: '2.4K'
+				}
+			]
+		}
+	]
+
+//- [data-nav] attribute will append section as a nav link in the header bar
+section.influencers(data-nav='Our Influencers')
+
+	+subtitle('Influence Your Brand')
+		p(data-txt) Organically align your brand with our elite group of influencers.
+
+	.prof-influencers
+		each o, i in profiles
+
+			mixin profileImage()
+				.prof-image
+					a.img-url(href=o.image_url, target='_blank') View
+					+image({ src: o.image, asBackground: true, clip: false, class: o.image.replace(/.jpg/g, '') })
+
+			mixin profileText()
+				.prof-txt
+					.clear
+						.prof-avatar(data-prof-anim): a(href='http://' + o.artist + '.deviantart.com', target='_blank'): +img(o.avatar)
+						.prof-name
+							a.title.crop(href='http://' + o.artist + '.deviantart.com', target='_blank', data-prof-anim)= o.artist
+							span.tag(data-prof-anim)!= o.tag
+
+					hr(data-prof-anim)
+					.prof-stats
+
+						.prof-stat.watchers(data-prof-anim)
+							.icon: +svg({ use: '#icon-watchers-outline', viewBox: '0 0 64 64' })
+							span.label Watchers
+							span.sep
+							span.num= o.watchers
+
+						.prof-stat.pageviews(data-prof-anim)
+							.icon: +svg({ use: '#icon-page-views-outline', viewBox: '0 0 64 64' })
+							span.label Page Views
+							span.sep
+							span.num= o.pageviews
+
+						.prof-stat.deviations(data-prof-anim)
+							.icon: +svg({ use: '#icon-deviations-outline', viewBox: '0 0 64 64' })
+							span.label Deviations
+							span.sep
+							span.num= o.deviations
+					//- hr(data-prof-anim)
+					.prof-social
+						span.tag(data-prof-anim) Social Followers
+						each social in o.social
+							.prof-stat.social(data-prof-anim)
+								.icon: +svg({ use: '#icon-' + social.site.toLowerCase(), viewBox: '0 0 64 64' })
+								span.label= social.site
+								span.sep
+								span.num= social.followers
+
+					hr(data-prof-anim)
+					p(data-prof-anim): a.link(href='http://' + o.artist + '.deviantart.com', target='_blank') View DeviantArt Profile
+
+			//- Loop for the content
+			.prof-card
+				+profileImage()
+				.prof-txt-bg: .prof-text-bg-layer
+				+profileText()
+	hr.black

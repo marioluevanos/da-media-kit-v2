@@ -1,0 +1,174 @@
+
+
+// NAVIGATION
+//-------------------------------------------
+
+nav {
+	position: fixed;
+	height: $nav-height;
+	left: 0; right: 0;
+	background: white;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.15);
+	z-index: 9000;
+
+	@include bp(0) {
+		height: $nav-height - 10;
+	}
+
+	.logo {
+		position: absolute;
+		top: 50%;
+		left: 30px;
+		height: 30px;
+		transform: translate(0,-50%);
+		@include bp(0) {
+			left: 15px;
+		}
+	}
+	.logo-mark {
+		fill: $color-primary-green;
+		height: inherit;
+		width: auto;
+		float: left;
+		margin: 0 0.5em 0 0;
+		transition: fill 0.15s linear;
+	}
+	.logo-title {
+		color: black;
+		font: normal 1em/1 $font-semibold;
+		display: inline-block;
+		line-height: 30px;
+		height: 30px;
+		position: relative;
+		transition: all 0.15s $ease-out-p0;
+		.logo-tag {
+			position: relative;
+			font: normal 1em $font-regular;
+			color: $color-primary-orange;
+			padding: 0 0 0 0.5em;
+			margin: 0 0 0 0.5em;
+			&:before {
+				content: '';
+				position: absolute;
+				top: 0; left: 0;
+				bottom: 0;
+				width: 1px;
+				background: rgba($color-light-gray, 0.3);
+				transform: skew(-28deg);
+			}
+		}
+	}
+	.nav-items {
+		display: flex;
+		height: $nav-height;
+		line-height: $nav-height;
+		flex-direction: row;
+		align-items: center;
+		position: absolute;
+		left: 180px;
+		right: 0;
+		@include bp(1) {
+			display: none;
+		}
+		.nav-link {
+			display: inline-block;
+			margin: 0 8px;
+			padding: 3px 8px;
+			font: normal 0.85em $font-regular;
+			color: $color-light-gray;
+			text-decoration: none;
+			position: relative;
+			transition: all 0.1s linear;
+			top: -1px;
+
+			&:hover {
+				color: black;
+			}
+
+			&:before {
+				content: '';
+				position: absolute;
+				width: 100%;
+				height: 3px;
+				bottom: -20px;
+				left: 50%;
+				background: $color-primary-green;
+				transform: translate(-50%, 0) skew(-28deg);
+				opacity: 0;
+				transition: all 0s linear;
+				z-index: -1;
+			}
+
+			//- Divider line
+			&:after {
+				content: '';
+				position: absolute;
+				top: 4px; right: -8px; bottom: 4px;
+				width: 1px;
+				background: rgba($color-light-gray, 0.3);
+				transform: skew(-28deg);
+			}
+			&[href*='about-us']:after {
+				display: none;
+			}
+		}
+
+	}
+	a.contact-link {
+		margin: 0;
+		position: absolute;
+		top: 3px;
+		right: 3px;
+		bottom: 3px;
+		display: flex;
+		align-items: center;
+		font-family: $font-semibold;
+		background: $color-green-1;
+		color: $color-green-4;
+		white-space: nowrap;
+		padding: 0 60px 0 45px;
+		z-index: 1;
+		transition: all 0.15s $ease-out-p0;
+		&:before {
+			content: '';
+			position: absolute;
+			top: 0; bottom: 0; left: 0;
+			width: $nav-height;
+			background: inherit;
+			transform: translate(-15px, 0) skew(-28deg);
+			z-index: -1;
+		}
+		&:hover {
+			background: $color-primary-green;
+			color: white;
+		}
+	}
+}
+
+$nav-list: (
+	'welcome',
+	'audience',
+	'brand-alignment',
+	'brand-partnerships',
+	'our-influencers',
+	'about-us'
+);
+
+@each $item in $nav-list {
+	#media-kit.#{$item} .nav-link[href*='#{$item}'] {
+		color: black;
+		&:before {
+			opacity: 1;
+		}
+	}
+}
+
+:not(.loaded) nav {
+	transform: translate(0%, -100%);
+	transition: transform 0.3s $ease-out-p0 0.6s;
+}
+
+.loaded nav {
+	transform: translate(0, 0);
+	transition: all 0.6s $ease-in-out-p0 0.3s;
+}

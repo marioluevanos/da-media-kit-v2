@@ -1,0 +1,528 @@
+
+
+section.brand-partnerships {
+	position: relative;
+	background: white;
+	padding-top: $nav-height;
+	z-index: 2;
+
+	@include bp(0) {
+		padding-top: $nav-height /2;
+	}
+
+	hr {
+		&:not(:last-of-type) {
+			margin: 10vh 0 0 0;
+			@include bp(1) {
+				margin: 0;
+			}
+		}
+		@include bp(1) {
+			background-attachment: scroll;
+		}
+	}
+
+	.case {
+		position: relative;
+		margin: 0 auto 0;
+		min-height: 100vh;
+		overflow: hidden;
+		display: flex;
+		align-items: center;
+
+		@include bp(1) {
+			display: block;
+			min-height: 0;
+		}
+	}
+
+	.case-main {
+		top: 0; right: 0; bottom: 0; left: 0;
+		position: absolute;
+		min-height: 100vh;
+		width: 100%;
+		overflow: hidden;
+		z-index: 2;
+
+		@include bp(1) {
+			position: relative;
+			min-height: 0;
+		}
+	}
+
+	.case-hero {
+
+		position: relative;
+		background: black;
+		width: 100%;
+		height: 80vh;
+		overflow: hidden;
+		margin-top: 4vh;
+		z-index: 1;
+
+		@include bp(1) {
+			position: relative;
+			top: 0; left: 0;
+			transform: none;
+			height: 40vh;
+			width: 100%;
+			min-height: 0;
+		}
+	}
+
+	.case-video {
+		position: absolute;
+		min-width: 101%;
+		min-height: 101%;
+		width: auto;
+		height: auto;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		opacity: 0.8;
+
+		@include bp(1) {
+			position: relative;
+			min-width: auto;
+			width: auto;
+			height: 100%;
+			opacity: 1;
+			top: 0;
+			left: 0;
+			transform: none;
+
+
+		}
+	}
+
+	@include bp(1) {
+		#case-kubo-and-the-two-strings-contest {
+			.case-cobrand:nth-of-type(2) svg.logo-universal {
+				height: 40px;
+				transform: translate(-70%, -50%);
+			}
+		}
+
+		#case-21-days-of-overwatch {
+			video {
+				opacity: 0.75;
+			}
+			.case-cobrand:nth-of-type(2) svg.logo-blizzard {
+				height: 35px;
+				transform: translate(-75%, -50%);
+			}
+		}
+
+
+		#case-lexus-is-design-contest {
+			video {
+				opacity: 0.9;
+			}
+			.case-cobrand:nth-of-type(2) svg {
+				transform: translate(-75%, -50%);
+				height: 35px;
+			}
+		}
+
+	}
+
+	.case-bg {
+		position: absolute;
+		top: 0; right: 0; bottom: 0; left: 0;
+		transform: translate(-35%, 0) skew(-28deg);
+		transition: all 1s $ease-out-p0;
+		overflow: hidden;
+		z-index: 2;
+		width: 60%;
+
+		@include bp(1) {
+			display: none;
+		}
+
+		.case-bg-image {
+			position: absolute;
+			background: transparent 50% 50%/cover no-repeat;
+			transform: translate(0, 0) skew(0deg);
+			width: 100%;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			figure {
+				position: absolute;
+				top: 0; right: -28%; bottom: 0; left: -28%;
+				transform: translate(30%, 0) skew(28deg);
+				background: transparent 50% 50%/cover no-repeat;
+				transition: all 1s $ease-out-p0;
+			}
+		}
+	}
+
+	.case-slide-cover {
+		position: absolute;
+		top: 0; right: 0; bottom: 0; left: 0;
+		transform: skew(-28deg) translate(25%, 0);
+		transition: all 1s $ease-out-p0;
+		background: white;
+		z-index: 1;
+		@include bp(1) {
+			display: none;
+		}
+	}
+
+	.case-title {
+		margin: auto;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		transition: transform 0.6s $ease-out-p0;
+		z-index: 1;
+		width: 100%;
+		max-width: 1440px;
+		padding: 0 10%;
+		.title {
+			font-size: 6.75vw;
+			max-width: 55vw;
+			color: white;
+			@include bp(1) {
+				font-size: 9vw;
+			}
+		}
+	}
+
+	.case-logos {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		margin-top: 60px;
+		position: relative;
+		z-index: 1;
+		@include bp(1) {
+			margin: 15px 0 0 10px;
+		}
+	}
+
+	.case-cobrand {
+		width: 127px;
+		height: 32px;
+		position: relative;
+		@include bp(1) {
+			width: 64px;
+			height: 15px;
+		}
+		svg {
+			display: block;
+			fill: white;
+			height: 80px;
+			width: auto;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			&.logo-align-left {
+				position: relative;
+				width: auto;
+				fill: white;
+				height: 100%;
+			}
+		}
+		&:nth-of-type(1) {
+			padding-right: 15px;
+			margin-right: 15px;
+			&:after {
+				content: '';
+				position: absolute;
+				top: -5px; right: -5px; bottom: -5px;
+				width: 1px;
+				background: white;
+				opacity: 0.3;
+				transform: skew(-28deg);
+
+				@include bp(1) {
+					right: 0;
+				}
+			}
+		}
+
+		//- the other guys
+		&:nth-of-type(2) {
+			svg {
+				transform: translate(-55%, -50%);
+				@include bp(1) {
+					height: 40px;
+					transform: translate(-50%, -50%);
+				}
+			}
+		}
+	}
+
+	.case-details {
+		width: 60%;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(0, -50%);
+		margin-left: 60px;
+		transition: all 1s $ease-out-p0;
+		z-index: 1;
+
+		@include bp(3) {
+			margin: 0 0 0 60px;
+		}
+		@include bp(1) {
+			position: relative;
+			left: 0;
+			right: 0;
+			transform: none;
+			width: 100%;
+			margin: auto;
+			padding: 15px 30px 30px;
+			&:before {
+				content: '';
+				position: absolute;
+				top: -23px;
+				left: 30px;
+				width: 0;
+				height: 0;
+				border-style: solid;
+				border-color: transparent transparent white transparent;
+				border-width: 12px 17px 12px 17px;
+				z-index: 1;
+			}
+		}
+	}
+
+	.case-txt {
+		max-width: 640px;
+		text-align: left;
+		position: relative;
+		transition: all 1s $ease-out-p0;
+		@include bp(4) {
+			max-width: 540px;
+		}
+		@include bp(3) {
+			max-width: 480px;
+		}
+		@include bp(2) {
+			max-width: 400px;
+		}
+		.case-type {
+			position: relative;
+		}
+		.case-info {
+			position: relative;
+			@include bp(1) {
+				display: none;
+			}
+		}
+		.sub-title {
+			font: normal 1em/1.33 $font-semibold;
+			border: none;
+			margin: 0;
+			padding: 0;
+		}
+
+		hr {
+			margin: 15px 0;
+			background: $color-primary-white;
+		}
+	}
+
+	.case-txt .title {
+		font-size: 5em;
+		color: $color-dark-gray;
+		color: $color-primary-green;
+		@include bp(4) {
+			font-size: 4em;
+		}
+		@include bp(3) {
+			font-size: 3em;
+		}
+
+	}
+
+	.case-txt p {
+		@include bp(4) {
+			font-size: 1em;
+		}
+	}
+
+	.case-meta {
+		margin: 20px 0;
+		padding: 20px 0;
+		display: flex;
+
+		.case-meta-value {
+			color: $color-dark-gray;
+			font: normal 1.875em/1 $font-semibold;
+			margin-right: 1em;
+		}
+
+		@include bp(2) {
+			margin: 15px 0 0;
+			padding: 0;
+			flex-direction: row;
+			flex-wrap: wrap;
+
+			.case-meta-value {
+				margin: 0 0 15px 0;
+				width: 50%;
+			}
+		}
+
+	}
+
+	.case-stat {
+		display: flex;
+	}
+
+	.case-label {
+		font: normal 0.53em/1 $font-semibold;
+		padding: 0 0 0 37px;
+		display: block;
+		@include bp(1) {
+			padding: 0 0 0 24px;
+		}
+	}
+
+	.case-meta .icon {
+		width: 32px;
+		height: 32px;
+		margin-right: 0.15em;
+		@include bp(1) {
+			width: 22px;
+			height: 22px;
+		}
+		svg {
+			position: relative;
+			fill: $color-dark-gray;
+			width: 100%;
+		}
+
+		//- Icons tweaks
+		svg.icon-comments-outline 		{ top: 0.15em;  }
+		svg.icon-favs-outline 			{ top: 0.075em; }
+		svg.icon-submissions-outline 	{ top: -0.10em; }
+
+	}
+
+	//- Case Images
+	.case-images {
+		min-height: 100vh;
+		width: 100%;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		margin: auto;
+	}
+
+	.case-mock {
+		max-width: 1440px;
+		position: absolute;
+		width: 75%;
+		margin: auto;
+		transform: translate(-50%, -50%);
+		left: 50%;
+		top: 50%;
+
+		svg.macbook-base {
+			position: absolute;
+			width: 130%;
+			bottom: -5%;
+			left: 50%;
+			z-index: 1;
+			transform: translate(-50%, 100%);
+		}
+	}
+
+	$mac-frame-width: 1.95em;
+
+	.case-mock-lid {
+		border-radius: 1.55em;
+		border: $mac-frame-width solid black;
+		padding-bottom: 46.75%;
+		position: relative;
+		width: 80%;
+		margin: auto;
+
+		//- Macbook silver ring
+		&:before {
+			content: '';
+			position: absolute;
+			top: -$mac-frame-width;
+			right: -$mac-frame-width;
+			bottom: -$mac-frame-width;
+			left: -$mac-frame-width;
+			border-radius: inherit;
+			border: 2px solid lighten($color-secondary-black, 5%);
+			z-index: 1;
+		}
+	}
+
+	.case-mock-window {
+		margin: auto;
+		overflow: hidden;
+		background: black;
+		position: absolute;
+		top: 0; right: 0; bottom: 0; left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 0;
+
+		figure[class*='-mock'] {
+			margin: auto;
+			width: 100%;
+			overflow: hidden;
+		}
+	}
+
+	.chrome {
+		background: black;
+		position: relative;
+		box-shadow: 0 1px 1px rgba(black, 0.3);
+		z-index: 2;
+		svg.chome-bar {
+			display: block;
+			width: 100%;
+		}
+	}
+
+	.case-images .case-image {
+		position: absolute;
+		box-sizing: border-box;
+		overflow: hidden;
+		box-shadow: 0 30px 60px rgba(black, 0.3);
+
+		img {
+			width: 100%;
+		}
+
+		&[class*='-img-1'] {
+			width: 25%;
+			position: absolute;
+			right: 5%;
+			top: 30%;
+		}
+		&[class*='-img-3'] {
+			width: 25%;
+			position: absolute;
+			right: 5%;
+			top: 60%;
+		}
+
+		&[class*='-img-2'] {
+			width: 25%;
+			position: absolute;
+			left: 5%;
+			top: 30%;
+		}
+		&[class*='-img-4'] {
+			width: 25%;
+			position: absolute;
+			left: 5%;
+			top: 60%;
+		}
+	}
+ }

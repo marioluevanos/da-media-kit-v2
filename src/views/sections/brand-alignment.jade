@@ -1,0 +1,72 @@
+//- Go to index.jade to find the mixins
+	dependancies
+	------------------------------------------
+-
+	var createList = [
+		{
+			name: 'Gaming',
+			image: 'img-overwatch-mccree.jpg',
+			artist: 'http://zendanaar.deviantart.com/art/Overwatch-McCree-613624072'
+		},
+		{
+			name: 'Film',
+			image: 'img-star-wars-yoda.jpg',
+			artist: 'http://anthonyfoti.deviantart.com/art/Star-Wars-TCG-Yoda-338986500'
+		},
+		{
+			name: 'Television',
+			image: 'img-mr-robot.jpg',
+			artist: 'http://carts.deviantart.com/art/Mr-Robot-638263560'
+		},
+		{
+			name: 'Photography',
+			image: 'img-phuong-my-spring-summer.jpg',
+			artist: 'http://zemotion.deviantart.com/art/Phuong-My-Spring-Summer-2015-IV-519067996'
+		},
+		{
+			name: 'Comics',
+			image: 'img-batgirl.jpg',
+			artist: 'http://adamhughes.deviantart.com/art/Batgirl-Cover-No-1-212674959'
+		},
+		{
+			name: 'Food/Beverage',
+			image: 'img-sapporo-samurai.jpg',
+			artist: 'http://jshoemake15.deviantart.com/art/Sapporo-samurai-551395386'
+		},
+		{
+			name: 'CPG',
+			image: 'img-axent-wear.jpg',
+			artist: 'http://yuumei.deviantart.com/art/Axent-Wear-Update-2-528154820'
+		},
+		{
+			name: 'Auto',
+			image: 'img-type-25-2006-velocity.jpg',
+			artist: 'http://antifan-real.deviantart.com/art/TYPE-25-2006-Velocity-23170556'
+		},
+		{
+			name: 'Education',
+			image: 'img-sketchdump.jpg',
+			artist: 'http://loish.deviantart.com/art/sketchdump-9-601568712'
+		},
+		{
+			name: 'Electronics',
+			image: 'img-nintendo.jpg',
+			artist: 'http://traptastic.deviantart.com/art/Nintendo-256277973'
+		}
+	]
+
+//- [data-nav] attribute will append section as a nav link in the header bar
+section.brand-alignment(data-nav='Brand Alignment')
+
+	+subtitle('Bleed and Breed Art')
+		p(data-txt) The largest and most influential community of culture creators at your fingertips means brand alignment from every genre.
+
+	.boxes.wrap.clear
+		each box in createList
+			.box
+				.box-txt
+					h3.sub-title= box.name
+					+caption(box.artist)
+				.box-image
+					+image({ src: box.image, asBackground: true, class: 'box-desaturated' })
+					+image({ src: box.image, asBackground: true, class: 'box-colored' })

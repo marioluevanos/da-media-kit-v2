@@ -1,0 +1,85 @@
+//- Go to index.jade to find the mixins
+	dependancies
+-
+	socialLinks = [{
+			text: 'Google+',
+			href: 'https://plus.google.com/+deviantART'
+		}, {
+			text: 'Facebook',
+			href: 'https://www.facebook.com/deviantart'
+		}, {
+			text: 'Pinterest',
+			href: 'https://www.pinterest.com/deviantart'
+		}, {
+			text: 'Twitter',
+			href: 'https://twitter.com/DeviantArt'
+		}, {
+			text: 'Instagram',
+			href: 'https://www.instagram.com/deviantart'
+		}, {
+			text: 'Tumblr',
+			href: 'http://deviantart.tumblr.com/'
+		}]
+
+//- [data-nav] attribute will append section as a nav link in the header bar
+footer.contact(data-nav='Contact Us')
+
+	+subtitle('Contact Us')
+	.wrap.clear
+		.col-8.before-2
+			.contact-form
+				form(name='insightly_web_to_lead', action='https://deviantart.insight.ly/WebToLead/Create', method='post')
+
+					div.row.clear
+						input(type='hidden', name='formId', value='2DBwmA8VKoFkM8zs0buEUA==')
+						label(for='insightly_LEAD_FIELD_1') Advertiser Type
+						select#insightly_LEAD_FIELD_1(name='LEAD_FIELD_1')
+							option(value='', disabled selected) Advertiser Type
+							option(value='A business wanting to advertise') A business wanting to advertise
+							option(value='A media agency') A media agency
+							option(value='An advertising network') An advertising network
+
+					div.row.clear
+						label(for='insightly_firstName') First Name:
+						input#insightly_firstName(name='FirstName', type='text', required, placeholder='First Name')
+					div.row.clear
+						label(for='insightly_lastName') Last Name:
+						input#insightly_lastName(name='LastName', type='text', required, placeholder='Last Name')
+					div.row.clear
+						label(for='insightly_title') Title:
+						input#insightly_Title(name='Title', type='text', placeholder='Title')
+					div.row.clear
+						label(for='insightly_organization') Organization:
+						input#insightly_organization(name='OrganizationName', type='text', placeholder='Organization')
+					div.row.clear
+						label(for='email') Email:
+						input#insightly_Email(name='email', type='text', required, placeholder='Email')
+					div.row.clear
+						label(for='phone') Phone:
+						input#insightly_Phone(name='phone', type='text', placeholder='Phone')
+					div.row.clear
+						label(for='insightly_LEAD_FIELD_2') Campaign Brief
+						textarea#insightly_LEAD_FIELD_2(name='LEAD_FIELD_2', value='Tell us more about your advertising objectives and approximate budget', required, placeholder='Tell us more about your advertising objectives and approximate budget')
+					div.clear.captcha
+						div: p We will get back to you within 24 hours. Please keep in mind that we are located in the U.S. (PST) and closed for major holidays.
+						div: #html_element
+					div.clear
+						input#insightly_ResponsibleUser(type='hidden', name='ResponsibleUser', value='1134039')
+						input#insightly_LeadSource(type='hidden', name='LeadSource', value='549354')
+						input#insightly_Submit.button(type='submit', value='Submit', disabled)
+	.wrap.clear
+		.col-2.mob-col.before-2
+			.txt
+				h4 Follow Us
+				each link in socialLinks
+					ul
+						li: a(href=link.href, target='_blank')= link.text
+
+		.col-4.mob-col
+			.txt
+				h4 Media Inquiries
+				p For media inquiries only #[a(href='mailto:media@deviantart.com?subject=Contact From Media Kit') media@deviantart.com.]
+			.txt
+				span.copy &copy; #[span.current-year 2017] DeviantArt. All rights reserved
+
+

@@ -1,0 +1,194 @@
+//- Go to index.jade to find the mixins
+	dependancies
+	------------------------------------------
+
+mixin metaValue(type)
+
+	//- Get the stats as an array
+	- stats = Object.keys(type)
+
+		//- Loop through the stats array
+		each stat in stats
+			- value = type[stat]
+			- icon = stat.replace(/[ ]/, '-').toLowerCase()
+
+			//- Check if stat has a value so it doesn't loop empty divs
+			if value
+				.case-meta-value
+					span.case-stat(data-case-anim)
+						.icon: +svg({ use: '#icon-' + icon + '-outline', viewBox: '0 0 64 64' })
+
+						//- Add a "+" symbol to all, except "submissions"
+						!= (stat !== 'submissions') ? value + '<small>+</small>' : value
+
+					//- Capitazlie the first letter for the stat label
+					span.case-label(data-case-anim)= stat.replace(/(\w{1})/, (all, first) => first.toUpperCase() )
+
+//- Array of Case Studies
+	------------------------------------------
+-
+	caseStudies = [
+		{
+			type: 'Crowd-Sourced Contest Program',
+			logo: '#logo-universal',
+			title: 'Kubo And The Two Strings Contest',
+			video: 'brand-hero-kubo.mp4',
+			stats: {
+				'Page Views': '445k',
+				favourites: '25.5k',
+				comments: '3.6k',
+				submissions: '574'
+			},
+			desc: [
+				'DeviantArt, Laika Studios, and Universal Pictures crafted a challenge designed to excite and engage artists with the Kubo IP to help increase brand awareness whilst driving Blu-Ray and DVD sales.',
+			'We asked the community to illustrate a moment in which Kubo used the power of music, family, and loved ones to overcome the many obstacles in his path. Incentivized by exclusive Kubo merchandise, cash prizing, and DeviantArt Core memberships, the community reacted by submitting 574 original pieces of artwork!'
+			],
+			mock: 'brand-kubo-mock.jpg',
+			images: [
+				{
+					src: 'brand-kubo-img-1.jpg',
+					artist: 'http://mizueyes777.deviantart.com/art/Heart-645561423'
+				},
+				{
+					src: 'brand-kubo-img-2.jpg',
+					artist: 'http://pechan.deviantart.com/art/Acceptance-645771232'
+				},
+				{
+					src: 'brand-kubo-img-3.jpg',
+					artist: 'http://sketch-geek.deviantart.com/art/Kubo-The-Daunting-Path-Ahead-645774772'
+				},
+				{
+					src: 'brand-kubo-img-4.jpg',
+					artist: 'http://thetinytaco.deviantart.com/art/Stamina-645710098'
+				}
+			],
+			background: [ 'brand-bg-kubo.jpg' ],
+			cta: 'http://go.deviantart.com/journal/The-Kubo-and-the-Two-Strings-Story-Within-Contest-641183617'
+		},
+		{
+			type: 'Influencer-Sourced Program',
+			logo: '#logo-blizzard',
+			title: '21 Days of Overwatch',
+			video: 'brand-hero-overwatch.mp4',
+			stats: {
+				'Page Views': '1.8MM',
+				favourites: '88.8k',
+				comments: '6.5k',
+			},
+			desc: [
+				'We partnered with twenty-one influential artists to create stunning artwork revealing a new character from Overwatch every day until the release of the Overwatch game! The countdown and daily reveals generated an enormous amount of buzz and elicited excitement from our artist community and beyond.',
+				'Featured on Forbes.com, the DeviantArt community was successful in fueling the organic hype and excitement around Overwatch even before the game’s release!'
+			],
+			mock: 'brand-overwatch-mock.jpg',
+			images: [
+				{
+					src: 'brand-overwatch-img-1.jpg',
+					artist: 'http://tsaoshin.deviantart.com/art/Genji-606534071'
+				},
+				{
+					src: 'brand-overwatch-img-2.jpg',
+					artist: 'http://ayyasap.deviantart.com/art/Bastion-Commission-by-DeviantArt-for-BLIZZARD-608390770'
+				},
+				{
+					src: 'brand-overwatch-img-3.jpg',
+					artist: 'http://ry-spirit.deviantart.com/art/Widowmaker-606888969'
+				},
+				{
+					src: 'brand-overwatch-img-4.jpg',
+					artist: 'http://kate-fox.deviantart.com/art/Overwatch-Symmetra-Fanart-606598939'
+				}
+			],
+			background: [ 'brand-bg-overwatch.jpg' ],
+			cta: 'http://go.deviantart.com/journal/21-Days-of-Overwatch-604056568'
+		},
+		{
+			type: 'Crowd-Sourced Contest & Event Activation Program',
+			logo: '#logo-lexus',
+			title: 'Lexus IS Design Contest',
+			video: 'brand-hero-lexus.mp4',
+			stats: {
+				'Page Views': '700k',
+				favourites: '1.4k',
+				comments: '2k',
+				submissions: '498',
+			},
+			desc: [
+				'Lexus was looking to engage creative artists and auto enthusiasts on DeviantArt, as our community aligned with Lexus’ “built to stand apart” mantra. Lexus and DeviantArt set out to create a customized version of the new Lexus IS F Sport to create high brand engagement. Excited by Lexus’ new model, the community ignited fandom by actively participating in the crowd-sourced contest program.',
+				'The live event activation excited fans even more when the user-generated design was built into a dazzling show car featured in the SEMA Auto Show in Las Vegas!'
+			],
+			mock: 'brand-lexus-mock.jpg',
+			images: [
+				{
+					src: 'brand-lexus-img-1.jpg',
+					artist: 'http://psas.deviantart.com/art/LExus-2-392876831'
+				},
+				{
+					src: 'brand-lexus-img-2.jpg',
+					artist: 'http://psas.deviantart.com/art/LExus-2-392876831'
+				},
+				{
+					src: 'brand-lexus-img-3.jpg',
+					artist: 'http://psas.deviantart.com/art/LExus-2-392876831'
+				},
+				{
+					src: 'brand-lexus-img-4.jpg',
+					artist: 'http://psas.deviantart.com/art/LExus-2-392876831'
+				}
+			],
+			background: [ 'brand-bg-lexus.jpg' ],
+			cta: 'http://moonbeam13.deviantart.com/journal/Lexus-IS-Design-Contest-382663603'
+		}
+	]
+
+
+//- [data-nav] attribute will append section as a nav link in the header bar
+section.brand-partnerships(data-nav='Brand Partnerships')
+
+	+subtitle('Featured Brand Partnerships')
+
+	each project, i in caseStudies
+
+		.case(id= 'case-' + project.title.toLowerCase().replace(/[ ]/g, '-'))
+
+				//- Video introduction
+				.case-hero
+					.case-title
+						h2.title.crop= project.title
+
+						.case-logos
+							.case-cobrand: +svg({ use: '#logo-align-left', viewBox: '0 0 127 32', className: 'logo' })
+							.case-cobrand: +svg({ use: project.logo, viewBox: '0 0 230 110', className: project.logo })
+
+					if (/.mp4/g).test(project.video)
+						+video(project.video, 'case-video')
+
+				.case-main
+
+					//- Background for text
+					.case-slide-cover
+
+					//- Cropped angled background
+					.case-bg
+						each bg in project.background
+							.case-bg-image
+								+image({
+									src: bg,
+									asBackground: true,
+									class: bg.replace(/.jpg|.gif|.png/g, '')
+								})
+
+					//- Case Study text and stats
+					.case-details: .case-txt
+						.case-type
+							p.sub-title(data-case-anim)= project.type
+							hr(data-case-anim)
+						.case-info
+							h2.title.crop(data-case-anim)= project.title
+						.case-meta
+							+metaValue(project.stats)
+
+						each paragraph in project.desc
+							p(data-case-anim)= paragraph
+						p(data-case-anim): a.link(href=project.cta, target='_blank') View On DeviantArt
+		hr.white
+

@@ -1,0 +1,77 @@
+//- Go to index.jade to find the mixins
+	dependancies
+	------------------------------------------
+-
+	brandValues = [
+		{
+			title: 'Audacious',
+			desc: [
+				'What these deviants do is',
+				'— they reach into our community to create and empower projects and ideas that haven’t been done before, oftentimes that haven’t yet been dreamed of.'
+			],
+			artist: 'http://marcsimonetti.deviantart.com/art/dance-with-dragons-by-GRR-MARTIN-295424142'
+		},
+		{
+			title: 'Kindred',
+			desc: [
+				'They’re',
+				'spirits, connecting with people on multiple levels.'
+			],
+			artist: 'http://threepwoody.deviantart.com/art/The-Gang-489160127'
+		},
+		{
+			title: 'Magnetic',
+			desc: [
+				'They are a',
+				'force that draws other community members in, gets them involved, and keeps everyone feeling like they belong.'
+			],
+			artist: 'http://detkef.deviantart.com/art/A-merry-song-522716900'
+		},
+		{
+			title: 'Inspired',
+			desc: [
+				'They’re',
+				'to create and do more, and to uplift others to do the same.',
+			],
+			artist: 'http://cestica.deviantart.com/art/THOUGHTS-437831738'
+		}
+	]
+
+//- [data-nav] attribute will append section as a nav link in the header bar
+section.about-us(data-nav='About Us')
+
+	+subtitle('About Us')
+
+	.brand-value-imgs
+		svg.crop-tier-2(viewBox='0 0 240 381'): use(xlink:href='#crop-tier-2')
+		.brand-value-imgs-wrap.clear
+			each value, i in brandValues
+				- title = value.title.toLowerCase()
+					.brand-value-img(data-value=title, data-i=i)
+						svg(viewBox='0 0 1500 970')
+							image(
+								width='1500',
+								height='970',
+								x='0',
+								y='0',
+								xlink:href='src/img/brand-values-' + title + '.jpg'
+							)
+
+	.brand-value-copy
+		.brand-value-copy-wrap
+			each value, i in brandValues
+				- title = value.title.toLowerCase()
+				.brand-value-txt(data-value=title, data-i=i)
+					each desc, i in value.desc
+						if i === 0
+							p(data-txt)= desc
+							h3.title.crop(data-txt)= value.title
+						if i === 1
+							p(data-txt)= desc
+
+	h2.brand-values-big-title.crop Audacious Kindred Magentic Inspired
+	.brand-txt
+		.wrap.clear
+			.col-5.before-2
+				p(data-txt) Founded in 2000, DeviantArt is the leading online community and social network for artists and visual enthusiasts. The company aggregates and distributes more original artist-generated content than any other site. It offers artists and fans of all interests an opportunity to communicate through art, share their passions for pop culture, and engage as part of a global collective.
+				p(data-txt) #[a.link(href='http://spyed.deviantart.com/journal/Boldly-Facing-The-Future-498282387', target='_blank') Learn About Our Story]

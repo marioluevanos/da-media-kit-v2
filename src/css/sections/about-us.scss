@@ -1,0 +1,170 @@
+section.about-us {
+
+	position: relative;
+	padding-top: $nav-height;
+	padding-bottom: 120px;
+	min-height: 100vh;
+
+	@include bp(0) {
+		padding-top: $nav-height /2;
+		min-height: 0;
+		padding: 30px 0 0;
+	}
+
+	h2.title {
+		color: $color-primary-green;
+		font-size: 5em;
+		margin: 0 0 60px;
+		@include bp(3) {
+			font-size: 2.5em;
+			max-width: 420px;
+		}
+		@include bp(0) {
+			font-size: 2em;
+			margin: 0 0 15px;
+		}
+	}
+
+	.brand-pillars {
+		position: relative;
+		margin: 30px 0;
+		@include bp(0) {
+			padding: 0 30px;
+			margin: 0 0 30px;
+		}
+	}
+
+	.brand-values {
+		@include bp(0) {
+			margin: 5px 0;
+		}
+	}
+
+	.brand-value {
+		position: relative;
+		color: white;
+		width: 50%;
+		float: left;
+		@include bp(0) {
+			width: 100%;
+			float: none;
+		}
+	}
+
+	.brand-txt {
+		@include bp(0) {
+
+		}
+	}
+
+	.brand-values-bg {
+		position: relative;
+		padding-bottom: 56.25%;
+		overflow: hidden;
+		figure {
+			position: absolute;
+			top: 5px; right: 5px; bottom: 5px; left: 5px;
+			background: transparent 50% 50%/cover no-repeat;
+			@include bp(0) {
+				top: 0; right: 0; bottom: 0; left: 0;
+				hr {
+					display: none;
+				}
+			}
+		}
+
+		figcaption {
+			@include bp(0) {
+				transition: all 1s $ease-out-p0;
+				transform: translate(0, -200%);
+				opacity: 0;
+				left: 10%;
+			}
+		}
+	}
+
+
+	.brand-values-desc {
+		max-width: 620px;
+		position: absolute;
+		top: 50%;
+		left: 10%;
+		opacity: 0;
+		transform: translate(0, -50%);
+		transition: all 1s $ease-out-p0;
+		z-index: 1;
+		h2.title {
+			margin: 5px 0;
+		}
+		p {
+			font: 1em $font-regular;
+			color: white;
+			margin: 0;
+		}
+		@include bp(0) {
+			left: 10%;
+			right: 10%;
+			transform: translate(0, -100%);
+		}
+	}
+
+
+	.brand-value.show {
+		figcaption {
+			color: white;
+			opacity: 1;
+			transform: translate(0, 0);
+		}
+		.brand-values-desc {
+			opacity: 1;
+			transform: translate(0, -50%);
+		}
+	}
+
+	.icon {
+		position: absolute;
+		bottom: 20px;
+		right: 20px;
+		width: 32px;
+		height: 32px;
+		z-index: 2;
+		svg {
+			opacity: 0.6;
+			width: 100%;
+			fill: white;
+		}
+	}
+
+
+	@include bp(0) {
+		h2.title {
+			color: $color-primary-green;
+			font-size: 10vw;
+			svg {
+				fill: $color-primary-green !important;
+			}
+			.word {
+				display: block!important;
+			}
+		}
+		.brand-pillars {
+			.wrap {
+				padding: 0;
+			}
+		}
+		.brand-pillars,
+		.brand-values {
+			div[class*='col'] {
+				display: block;
+				float: none;
+				width: 100%;
+				margin: 0;
+				padding: 0;
+			}
+			.brand-values-bg {
+				margin-bottom: 5px;
+			}
+		}
+	}
+
+}

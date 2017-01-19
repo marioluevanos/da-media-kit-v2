@@ -1,0 +1,20 @@
+//- Go to index.jade to find the mixins
+	dependancies
+	------------------------------------------
+
+//- [data-nav] attribute will append section as a nav link in the header bar
+
+section.welcome#welcome(data-nav='Welcome')
+
+	#mask
+		svg.crop-tier-2(viewBox='0 0 240 381'): use(xlink:href='#crop-tier-2')
+		svg.mask(viewBox='0 0 1060 1717')
+			image(x='0', y='0', width='620' height='1755', xlink:href='src/img/img-mask-1.jpg')
+
+	.wrap.clear
+		.col-5.before-1
+			h1#intro-title.title.crop(data-intro) There’s no other place like DeviantArt
+	.wrap.clear
+		.col-3.before-1
+			p(data-intro) We are an unapologetically addictive experience. Our world is a festival of originality where everyone can revel in the freedom of artistic expression. We are the deviation of creativity that shatters the confines of expectation. We can’t help it—it runs through our veins and compels us to nurture it in others.
+			p(data-intro) #[a.link(href='http://deviantart.com', target='_blank') This is DeviantArt.]

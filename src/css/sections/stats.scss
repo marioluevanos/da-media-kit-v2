@@ -1,0 +1,459 @@
+section.stats {
+
+	position: relative;
+	padding-top: $nav-height;
+
+	@include bp(1) {
+		padding-top: $nav-height /2;
+	}
+
+	.stat {
+		position: relative;
+		.icon {
+			width: 64px;
+			height: 64px;
+			@include bp(1) {
+				width: 32px;
+				height: 32px;
+			}
+			svg {
+				width: inherit;
+				height: auto;
+			}
+		}
+	}
+
+	.stat-module:not(:last-of-type) {
+		padding-bottom: 100px;
+		@include bp(1) {
+			padding: 30px 0;
+		}
+
+	}
+
+	.source {
+		margin-top: 5px;
+		text-align: left;
+		font: normal 0.666em/1 $font-regular;
+		color: $color-green-3;
+		opacity: 0.6;
+	}
+
+	//- Audience
+	//- ------------------------------------------
+
+	.stat-audience.stat-module {
+
+		padding-bottom: 0;
+
+		div[class*='col'] {
+			overflow: hidden;
+			 &:nth-of-type(1) svg.crop-tier-2 {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 30px;
+				fill: white;
+				transform: translate(-1px, -1px) rotate(180deg);
+			}
+			&:nth-of-type(2) svg.crop-tier-2 {
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				width: 30px;
+				fill: white;
+				transform: translate(1px, 1px) rotate(0deg);
+			}
+		}
+
+		@include bp(1) {
+			.wrap {
+				padding: 0 30px;
+				div[class^="col-"] {
+					width: 99.302%;
+					padding: 0;
+					margin-bottom: 1.396%;
+				}
+			}
+		}
+	}
+
+	.stat-audience .stat {
+		padding: 50px;
+		background: $color-green-1;
+		overflow: hidden;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		@include bp(1) {
+			padding: 30px;
+			display: block;
+		}
+
+		.icon {
+			width: 80px;
+			height: 80px;
+			margin-right: 15px;
+			svg { fill: $color-green-3; }
+			@include bp(1) {
+				width: 50px;
+				height: 50px;
+			}
+		}
+		.data {
+			width: 190px;
+		}
+		.txt {
+			display: flex;
+			flex-direction: row;
+			color: $color-green-3;
+			@include bp(1) {
+				max-width: 80%;
+				margin: auto;
+			}
+			.data strong {
+				font: normal 3em/1 $font-bold;
+			}
+			.data span {
+				font: normal 1em/1 $font-semibold;
+				display: block;
+			}
+		}
+		.source {
+			text-align: left;
+		}
+	}
+
+	//- Audience Index
+	//- ------------------------------------------
+	$ageIndexHeight: 30px;
+
+	.stat-audience-index {
+		position: relative;
+		margin: 10px 0;
+		@include bp(1) {
+			&.stat-module {
+				padding-top: 0;
+			}
+		}
+	}
+
+	.stat-audience-index .row {
+		margin-bottom: 10px;
+		height: $ageIndexHeight;
+		@include bp(1) {
+			height: $ageIndexHeight /2;
+		}
+		span {
+			display: block;
+			color: $color-light-gray;
+		}
+	}
+
+	.stat-audience-index span.label {
+		font-family: $font-semibold;
+		line-height: $ageIndexHeight;
+		color: $color-dark-gray;
+		@include bp(1) {
+			line-height: $ageIndexHeight /2;
+		}
+	}
+
+	.stat-audience-index .txt-age {
+		text-align: right;
+		line-height: $ageIndexHeight;
+		white-space: nowrap;
+		@include bp(1) {
+			line-height: $ageIndexHeight /2;
+			position: relative;
+			left: -10px;
+		}
+	}
+
+	.stat-audience-index .txt-index {
+		text-align: left;
+		line-height: $ageIndexHeight;
+		white-space: nowrap;
+		@include bp(1) {
+			line-height: $ageIndexHeight /2;
+			position: relative;
+			left: 10px;
+		}
+	}
+
+	.stat-audience-index div.bg {
+		position: relative;
+		height: $ageIndexHeight;
+		background: $color-primary-white;
+		transform-origin: 0 50%;
+		@include bp(1) {
+			height: $ageIndexHeight /2;
+		}
+	}
+
+	.stat-audience-index div.range {
+		width: 49.5%; // Random number to represet a sarting point of 100
+		height: $ageIndexHeight;
+		position: relative;
+		@include bp(1) {
+			height: $ageIndexHeight /2;
+			width: 47%;
+		}
+	}
+
+	.stat-audience-index div.value {
+		background: $color-green-2;
+		position: absolute;
+		top: 0; left: 0; bottom: 0;
+		transform-origin: 0 50%;
+
+		//- Angeled corners
+		&:after {
+			content: '';
+			background: inherit;
+			position: absolute;
+			height: $ageIndexHeight;
+			width: $ageIndexHeight;
+			transform: skew(-28deg) translate($ageIndexHeight/2, 0);
+			top: 0; right: 0; bottom: 0;
+			@include bp(1) {
+				width: $ageIndexHeight /2;
+				height: $ageIndexHeight /2;
+				transform: skew(-28deg) translate($ageIndexHeight/4, 0);
+			}
+		}
+	}
+
+	.stat-audience-index .source {
+		text-align: right;
+		color: $color-dark-gray;
+	}
+
+	.stat-audience-index .average {
+		position: relative;
+		.range span {
+			color: $color-dark-gray;
+			line-height: 1;
+		}
+	}
+
+	.stat-audience-index .average .range {
+		position: absolute;
+		&:after {
+			content: '';
+			position: absolute;
+			width: 0;
+			height: 1px;
+			background: $color-green-3;
+			transform: rotate(90deg);
+			transform-origin: 100% 100%;
+			right: 0;
+			bottom: $ageIndexHeight;
+			transition: width 1s $ease-out-p2 0.6s;
+			@include bp(1) {
+				bottom: $ageIndexHeight /2;
+			}
+		}
+		&.active:after {
+			width: ($ageIndexHeight * 5) + 10;
+			@include bp(1) {
+				width: (($ageIndexHeight/2) * 5) + 10;
+			}
+
+		}
+	}
+
+	.stat-audience-index .average .range span {
+		position: absolute;
+		font: normal 0.666em/1 $font-regular;
+		line-height: $ageIndexHeight;
+		opacity: 0.6;
+		right: 0;
+		@include bp(1) {
+			line-height: $ageIndexHeight /2;
+		}
+
+	}
+
+	//- Enagement
+	//- ------------------------------------------
+	.stat-engagement .row {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		@include bp(1) {
+			flex-wrap: wrap;
+		}
+	}
+
+	.stat-engagement .stat {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.stat-engagement .stat .txt {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		@include bp(1) {
+			align-items: flex-start;
+		}
+	}
+
+	.stat-engagement .icon {
+		margin-right: 15px;
+		@include bp(1) {
+			margin-right: 10px;
+		}
+		svg {
+			fill: $color-dark-gray;
+		}
+	}
+
+	.stat-engagement .row .col {
+		width: 25%;
+		display: flex;
+		align-items: flex-start;
+		@include bp(1) {
+			width: 100%;
+			&:not(:last-of-type) {
+				border-bottom: 1px dotted $color-green-1;
+				margin-bottom: 15px;
+				padding-bottom: 15px;
+			}
+		}
+	}
+
+	.stat-engagement .data {
+		color: $color-dark-gray;
+	}
+
+	.stat-engagement .data strong {
+		font: normal 1.666em/1 $font-semibold;
+		white-space: nowrap;
+	}
+
+	.stat-engagement .data span {
+		font: normal 1em/1 $font-semibold;
+		display: block;
+	}
+
+	.stat-engagement .source {
+		color: $color-dark-gray;
+	}
+
+	//- Social Presence
+	//- ------------------------------------------
+	.stat-social-presence {
+		position: relative;
+	}
+
+	.stat-social-presence .row {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		overflow: hidden;
+		position: relative;
+		@include bp(1) {
+			flex-wrap: wrap;
+		}
+	}
+
+	.stat-social-presence .stat {
+		width: 16.666%;
+		padding: 0 5px;
+		box-sizing: border-box;
+		@include bp(1) {
+			width: 50%;
+			margin-bottom: 15px;
+		}
+	}
+
+	.stat-social-presence .icon {
+		width: 100%;
+		height: auto;
+		text-align: center;
+		margin-bottom: 0.55em;
+		svg {
+			fill: $color-dark-gray;
+			width: 80%;
+			@include bp(1) {
+				width: 60%;
+			}
+		}
+	}
+
+	.stat-social-presence .data {
+		padding: 20px;
+		background: $color-green-1;
+		color: $color-green-3;
+		text-align: center;
+		white-space: nowrap;
+		position: relative;
+		transform-origin: 50% 100%;
+		@include bp(1) {
+			padding: 10px;
+			svg.crop-tier-2 {
+				width: 10px !important;
+			}
+		}
+	}
+
+	.stat-social-presence .stat:first-of-type svg.crop-tier-2 {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 20px;
+		fill: white;
+		transform: translate(-1px, -1px) rotate(180deg);
+	}
+
+	.stat-social-presence .stat:last-of-type svg.crop-tier-2 {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		width: 20px;
+		fill: white;
+		transform: translate(1px, 1px) rotate(0deg);
+	}
+
+	.stat-social-presence .data strong {
+		font: normal 1em/1 $font-semibold;
+		display: block;
+	}
+
+	//- Brands
+	//- ------------------------------------------
+	.stat-brands {
+
+		position: relative;
+
+		.col-2 {
+			margin-bottom: 0.6%;
+			@include bp(1) {
+				width: 49.302%;
+			}
+			@include bp(0) {
+				width: 32.635%;
+			}
+		}
+
+		figure { box-shadow: none; }
+
+		.brands-item {
+			overflow: hidden;
+			text-align: center;
+		}
+		.brands-logo {
+			fill: $color-dark-gray;
+			opacity: 1;
+			width: 66%;
+		}
+
+	}
+
+
+}
+

@@ -1,0 +1,19 @@
+@mixin bp($point) {
+	$bp-0: "(max-width:460px)";
+	$bp-1: "(max-width:768px)";
+	$bp-2: "(max-width:1024px)";
+	$bp-3: "(max-width:1366px)";
+	$bp-4: "(max-width:1650px)";
+
+	@if $point == 0 {
+		@media screen and #{$bp-0} { @content; }
+	} @else if $point == 1 {
+		@media screen and #{$bp-1} { @content; }
+	} @else if $point == 2 {
+		@media screen and #{$bp-2}  { @content; }
+	} @else if $point == 3 {
+		@media screen and #{$bp-3}  { @content; }
+	} @else if $point == 4 {
+		@media screen and #{$bp-4}  { @content; }
+	}
+}
