@@ -7,14 +7,14 @@ View Live at [www.deviantartads.com](http://www.deviantartads.com)
 
 ## Codekit 3 Configuration for r.js
 
-Add a custom hook with the following:
+To compile source into index-min.js production code, add a custom hook with the following:
 
-Type: Shell Script
+1. **Type:** Shell Script
 
-*Run this script when a file is processed and...*
+2. **Run this script when a file is processed and...**
 
-**Any** *of the following are true*
+3. **Any** *of the following are true*
 
-**Filename** **Ends With** *.js*
+4. **Filename** | **Ends With** *.js*
 
-`node src/js/libs/r.js -o src/js/libs/build.js`
+5. `node src/js/libs/r.js -o src/js/libs/build.js`
