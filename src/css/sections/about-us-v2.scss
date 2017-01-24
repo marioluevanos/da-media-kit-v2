@@ -1,3 +1,4 @@
+
 section.about-us {
 
 	position: relative;
@@ -16,23 +17,18 @@ section.about-us {
 		color: $color-primary-green;
 	}
 
-	p {
-		color: white;
-	}
+	p { color: white; }
 
-	a {
-		color: white;
-	}
+	a { color: white; }
 
 	a.link {
 		color: white;
 		&:after {
 			background: $color-green-4;
 		}
-
 	}
 
-	.brand-value-imgs {
+	.about-images {
 		position: relative;
 		margin: 0 30% 60px 0;
 		overflow: hidden;
@@ -43,11 +39,11 @@ section.about-us {
 			bottom: 0;
 			right: 0;
 			fill: $color-secondary-black;
-			z-index: 1337;
+			z-index: 2;
 		}
 	}
 
-	.brand-value-imgs-wrap {
+	.slider {
 		width: 100%;
 		position: relative;
 		top: 0;
@@ -57,7 +53,12 @@ section.about-us {
 		padding-bottom: 42%;
 	}
 
-	.brand-value-img {
+	.slider-controls {
+		position: absolute;
+		opacity: 0;
+	}
+
+	.slider-item {
 		background: black;
 		position: absolute;
 		top: 0; bottom: 0; left: 0;
@@ -66,9 +67,11 @@ section.about-us {
 
 		svg {
 			width: 100%;
-			position: relative;
-			transform: translate(0, -50%);
+			position: absolute;
 			top: 50%;
+			transform: translate(0, -50%);
+			fill: $color-primary-green;
+			z-index: 2;
 		}
 
 		figure {
@@ -93,17 +96,7 @@ section.about-us {
 		}
 	}
 
-
-	.brand-value-img figure.brand-value-audacious {
-		background-position: 50% 100%;
-	}
-
-	.brand-value-img figure.brand-value-inspired {
-		background-position: 50% 100%;
-	}
-
-	//-Big Ass Title
-	.brand-values-big-title {
+	.about-big-title {
 		color: $color-primary-black;
 		font-size: 8vw;
 		margin: 0;
@@ -114,11 +107,11 @@ section.about-us {
 		transform: translate(-50%, -25%);
 	}
 
-	.brand-value-copy-wrap {
+	.about-copy-wrap {
 		width: 100%;
 	}
 
-	.brand-value-copy {
+	.about-copy {
 		max-width: 420px;
 		position: absolute;
 		width: 100%;
@@ -135,10 +128,8 @@ section.about-us {
 			color: white;
 			margin: 0;
 		}
-		.brand-value-txt {
+		.about-copy-txt {
 			position: absolute;
 		}
 	}
-
-
 }

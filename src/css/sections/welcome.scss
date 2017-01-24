@@ -141,3 +141,48 @@ section.welcome {
 
 }
 
+
+//- Since these elements load right after the
+//- loading screen, placing this css here
+
+:not(.loaded) {
+	section.welcome > #mask {
+		opacity: 0;
+	}
+	section.welcome > .wrap {
+		transform: translate(0, 0);
+	}
+	nav {
+		transform: translate(0, -100%);
+	}
+	.logo-type {
+		transform: translate(0, 300%);
+	}
+	section.stats {
+		opacity: 0;
+	}
+}
+
+.loaded {
+	section.welcome > #mask {
+		opacity: 1;
+		transition: all 0.6s $ease-out-p0 0.3s;
+	}
+	section.welcome > .wrap {
+		transform: translate(0, 0);
+		transition: all 0.6s $ease-out-p0 0.3s;
+	}
+	section.stats {
+		opacity: 1;
+		transition: all 0.6s $ease-out-p0 0.3s;
+	}
+	nav {
+		transform: translate(0, 0);
+		transition: all 0.6s $ease-in-out-p0 0.9s;
+	}
+	.logo-type {
+		transform: translate(0, 0);
+		transition: all 0.6s $ease-in-out-p0 0.9s;
+	}
+}
+

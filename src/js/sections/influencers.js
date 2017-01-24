@@ -62,6 +62,7 @@ define([
 
 	var profCardExit = {
 		opacity: 0,
+		y: '-25%',
 		ease: ease.none
 	};
 

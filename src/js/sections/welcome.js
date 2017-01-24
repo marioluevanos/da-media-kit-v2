@@ -23,15 +23,8 @@ define([
 	var selectAll = utils.selectAll;
 	var ease = utils.ease;
 	var bodyController = animations.bodyController;
-	var svgImage = select('svg.mask image');
 
-	var _clipMask = function() {
-
-		/*	For some reason, for Safari, Chrome and Firefox to work,
-			the clip-path property needs to be added like so...
-			Instead via the CSS "#mask svg image { clip-path: url(#...) }" */
-		svgImage.style.cssText += 'clip-path: url(#logo-mark-crop)';
-	};
+	var svgImage = select('#mask svg.mask image');
 
 	var _animateMaskedImage = function(scollingStarted) {
 		if (window.outerWidth > 768) {
@@ -65,7 +58,6 @@ define([
 
 	var init = function() {
 		_chain()
-			.then(_clipMask)
 			.then(_animateMaskedImage);
 	};
 

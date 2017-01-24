@@ -61,7 +61,7 @@ section.influencers {
 			right: 0;
 			width: 130px;
 			background: white;
-			height: 70px;
+			height: 30px;
 			transform: translate(10%, 0) skew(-44deg);
 		}
 		@include bp(1) {display: none;}

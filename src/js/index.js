@@ -74,11 +74,11 @@ function index(
 
 	return new QueryLoader2(document.body, {
 		barColor 		: '#D4F5DE',
-		backgroundColor : '#F2F2F2',
+		backgroundColor : '#FFFFFF',
 		percentage 		: true,
 		barHeight 		: 3,
-		minimumTime 	: 1000,
-		fadeOutTime 	: 150,
+		minimumTime 	: 150,
+		fadeOutTime 	: 1000,
 		onComplete 		: loaderOnComplete
 	});
 

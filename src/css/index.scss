@@ -106,15 +106,8 @@ body {
 	transition: transform 0.3s $ease-in-p0;
 	transform-origin: 50% 50%;
 	visibility: hidden;
-	section {
-		transition: opacity 0s linear 0s;
-		opacity: 0;
-	}
 	.loaded & {
 		visibility: visible;
-		section {
-			opacity: 1;
-		}
 	}
 }
 

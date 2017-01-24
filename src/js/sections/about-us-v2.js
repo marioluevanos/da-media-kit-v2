@@ -25,9 +25,7 @@ define([
 	var device = utils.device;
 	var bodyController = animations.bodyController;
 
-	var bigTitle = select('.brand-values-big-title');
-	var brandImages = selectAll('.brand-value-img');
-	var brandText = selectAll('.brand-value-txt');
+	var bigTitle = select('.about-big-title');
 
 	var _bigTitleAnimaion = function() {
 
@@ -46,34 +44,164 @@ define([
 
 		bigTitleScene
 			.setTween(bigTitleTL)
-			.tweenChanges(true)
+			.tweenChanges(false)
 			.addTo(bodyController);
 	};
 
 	var _slideshow = function _slideshow() {
 
-		/* Pre stage elements */
-		var stage = function(elements, css) {
-			elements.forEach(function(val, i) {
-				if (i > 0) { TweenMax.set(val, css); }
-			});
-		};
+		var slides = selectAll('.slider-item');
+		var captions = selectAll('.slider-captions');
+		var navPrev = select('.slider-prev');
+		var navNext = select('.slider-next');
+		var startAutoplay = select('.slider-autoplay');
+		var stopAutoplay = select('.slider-stop');
 
-		stage(brandImages, {
-			opacity: 0
-		});
+		var slidesCount = slides.length;
+		var prevSlideID = null;
+		var currSlideID = 0;
+		var isAnimating = false;
+		var isAutoPlay = false;
+		var duration = 0.6;
+		var delay = 5;
 
-		stage(brandText, {
-			opacity: 0
-		});
+		function init() {
 
-		/*
-			TODO:
-			— Make a timeline with all the sequenced slide animations in a looping order
-			— Same thing for the text description and sync images/text together
-			— Add progress indicator
-			— Use TimelineMax methods to control animation
-		*/
+			TweenMax.set(slides, { x: '-100%' });
+			TweenMax.set(captions, { autoAlpha: 0 });
+
+			navPrev.addEventListener('click', gotoPrevSlide, false);
+			navNext.addEventListener('click', gotoNextSlide, false);
+			startAutoplay.addEventListener('click', startAutoPlay, false);
+			stopAutoplay.addEventListener('click', stopAutoPlay, false);
+			gotoSlide(0, 0);
+			startAutoPlay();
+		}
+
+		function gotoPrevSlide() {
+			var slideToGo = currSlideID - 1;
+			if (slideToGo <= -1) {
+				slideToGo = slidesCount - 1;
+			}
+			stopAutoPlay();
+			gotoSlide(slideToGo, duration, 'prev');
+		}
+
+		function gotoNextSlide() {
+			var slideToGo = currSlideID + 1;
+			if (slideToGo >= slidesCount) {
+				slideToGo = 0;
+			}
+			stopAutoPlay();
+			gotoSlide(slideToGo, duration, 'next');
+		}
+
+		function gotoSlide(slideID, _time, _direction) {
+
+			var nextTL = function(prevID, currID, time) {
+
+				var prevSlide = slides[prevID];
+				var currSlide = slides[currID];
+
+				var prevCaption = captions[prevID];
+				var currCaption = captions[currID];
+
+				return	new TimelineMax({ paused: true })
+
+					.to(prevSlide, time, {
+						x: '-100%'
+					}, 0)
+					.fromTo(currSlide, time, {
+						x: '100%'
+					}, {
+						x: '0%'
+					}, 0)
+
+					.to(prevCaption, time, {
+						autoAlpha: 0
+					}, 0)
+					.fromTo(currCaption, time, {
+						autoAlpha: 0
+					}, {
+						autoAlpha: 1
+					}, 0);
+			};
+
+			var prevTL = function(prevID, currID, time) {
+
+				var prevSlide = slides[prevID];
+				var currSlide = slides[currID];
+
+				var prevCaption = captions[prevID];
+				var currCaption = captions[currID];
+
+				return new TimelineMax({ paused: true })
+
+					.to(prevSlide, time, {
+						x: '100%'
+					}, 0)
+					.fromTo(currSlide, time, {
+						x: '-100%'
+					}, {
+						x: '0%'
+					}, 0)
+
+					.to(prevCaption, time, {
+						autoAlpha: 0
+					}, 0)
+					.fromTo(currCaption, time, {
+						autoAlpha: 0
+					}, {
+						autoAlpha: 1
+					}, 0);
+			};
+
+
+			if (!isAnimating) {
+
+				var time = (_time !== null) ? _time : duration;
+				var direction = (_direction != null) ? _direction : 'next';
+
+				isAnimating = true;
+				prevSlideID = currSlideID;
+				currSlideID = slideID;
+
+				if (direction === 'next') {
+					nextTL(prevSlideID, currSlideID, time).play();
+
+				} else {
+					prevTL(prevSlideID, currSlideID, time).play();
+				}
+
+				TweenMax.delayedCall(time, function() {
+					isAnimating = false;
+				});
+			}
+		}
+
+		function play() {
+			gotoNextSlide();
+			TweenMax.delayedCall(delay, play);
+		}
+
+		function startAutoPlay(immediate) {
+			if (immediate != null) {
+				immediate = false;
+			}
+
+			if (immediate) {
+				gotoNextSlide();
+			}
+			TweenMax.delayedCall(delay, play);
+		}
+
+		function stopAutoPlay() {
+			isAutoPlay = false;
+			TweenMax.killDelayedCallsTo(play);
+		}
+
+		init();
+
 	};
 
 	var init = function() {
@@ -88,3 +216,5 @@ define([
 	};
 
 });
+
+

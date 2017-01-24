@@ -163,12 +163,4 @@ $nav-list: (
 	}
 }
 
-:not(.loaded) nav {
-	transform: translate(0%, -100%);
-	transition: transform 0.3s $ease-out-p0 0.6s;
-}
 
-.loaded nav {
-	transform: translate(0, 0);
-	transition: all 0.6s $ease-in-out-p0 0.3s;
-}
