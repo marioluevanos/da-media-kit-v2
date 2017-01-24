@@ -59,7 +59,6 @@ function index(
 
 		/* Begin the chain */
 		_init
-		.then(animations.init)
 		.then(welcome.init)
 		.then(stats.init)
 		.then(brandAlignment.init)

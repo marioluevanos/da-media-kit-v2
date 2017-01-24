@@ -67,6 +67,7 @@ section.brand-partnerships {
 			height: 40vh;
 			width: 100%;
 			min-height: 0;
+			margin-top: 0;
 		}
 	}
 
@@ -188,6 +189,9 @@ section.brand-partnerships {
 			@include bp(1) {
 				font-size: 9vw;
 			}
+		}
+		.title .word {
+			transition: clip-path 0.6s $ease-out-p1;
 		}
 	}
 

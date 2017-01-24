@@ -14,7 +14,7 @@
 		{
 			title: 'Kindred',
 			desc: [
-				'They’re',
+				'We are',
 				'spirits, connecting with people on multiple levels.'
 			],
 			artist: 'http://threepwoody.deviantart.com/art/The-Gang-489160127'
@@ -22,7 +22,7 @@
 		{
 			title: 'Magnetic',
 			desc: [
-				'They are a',
+				'We are a',
 				'force that draws other community members in, gets them involved, and keeps everyone feeling like they belong.'
 			],
 			artist: 'http://detkef.deviantart.com/art/A-merry-song-522716900'
@@ -30,7 +30,7 @@
 		{
 			title: 'Inspired',
 			desc: [
-				'They’re',
+				'We are',
 				'to create and do more, and to uplift others to do the same.',
 			],
 			artist: 'http://cestica.deviantart.com/art/THOUGHTS-437831738'
@@ -60,11 +60,16 @@ section.about-us(data-nav='About Us')
 							asBackground: true
 						})
 
-	.slider-controls
-		button.slider-prev Prev
-		button.slider-next Next
-		button.slider-autoplay Start
-		button.slider-stop Stop
+		.slider-controls
+
+
+			button.slider-prev
+				.icon: +svg({ use: '#icon-arrow-outline', viewBox: '0 0 64 64' })
+			button.slider-next
+				.icon: +svg({ use: '#icon-arrow-outline', viewBox: '0 0 64 64' })
+
+			button.slider-autoplay Start
+			button.slider-stop Stop
 
 	.about-copy
 
@@ -83,6 +88,6 @@ section.about-us(data-nav='About Us')
 
 	.brand-txt
 		.wrap.clear
-			.col-5.before-2
+			.col-8.before-2
 				p Founded in 2000, DeviantArt is the leading online community and social network for artists and visual enthusiasts. The company aggregates and distributes more original artist-generated content than any other site. It offers artists and fans of all interests an opportunity to communicate through art, share their passions for pop culture, and engage as part of a global collective.
 				p #[a.link(href='http://spyed.deviantart.com/journal/Boldly-Facing-The-Future-498282387', target='_blank') Learn About Our Story]

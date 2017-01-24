@@ -205,8 +205,8 @@ define([
 	};
 
 	var init = function() {
+		_slideshow();
 		if (device.desktop) {
-			_slideshow();
 			_bigTitleAnimaion();
 		}
 	};

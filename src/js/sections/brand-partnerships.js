@@ -64,7 +64,6 @@ define([
 		});
 	};
 
-
 	var caseStudyAnimations = function() {
 
 		_caseStudies.forEach(function(val) {

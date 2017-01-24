@@ -178,6 +178,11 @@ section.influencers {
 				left: -35px;
 				top: 5px;
 			}
+			@include bp(0) {
+				width: 22px;
+				height: 22px;
+				left: -28px;
+			}
 		}
 
 		.prof-name a.crop.title {

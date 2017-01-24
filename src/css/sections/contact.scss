@@ -10,11 +10,15 @@ footer.contact {
 	z-index: 1;
 
 	@include bp(0) {
-		padding: ($nav-height /2) 0 90px;
+		padding: ($nav-height /2) 0 0;
 	}
 
 	.sub-title {
 		color: $color-primary-green;
+		color: $color-light-gray;
+		@include bp(0) {
+			margin-bottom: 30px;
+		}
 	}
 
 	h4 {
@@ -161,15 +165,21 @@ footer.contact {
 		justify-content: flex-end;
 		> div {
 			width: 50%;
+			@include bp(0) {
+				width: 100%;
+				margin: 15px 0;
+			}
 			&:last-of-type {
 				display: flex;
 				justify-content: flex-end;
+				@include bp(0) {
+					justify-content: center;
+				}
 			}
 		}
 		@include bp(0) {
 			display: block;
-			max-width: 300px;
-			margin: 0 auto 15px;
+			margin: 15px auto 0;
 		}
 		p {
 			color: $color-light-gray;

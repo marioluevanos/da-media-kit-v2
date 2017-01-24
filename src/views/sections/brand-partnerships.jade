@@ -15,14 +15,14 @@ mixin metaValue(type)
 			//- Check if stat has a value so it doesn't loop empty divs
 			if value
 				.case-meta-value
-					span.case-stat(data-case-anim)
+					span.case-stat(data-anim)
 						.icon: +svg({ use: '#icon-' + icon + '-outline', viewBox: '0 0 64 64' })
 
 						//- Add a "+" symbol to all, except "submissions"
 						!= (stat !== 'submissions') ? value + '<small>+</small>' : value
 
 					//- Capitazlie the first letter for the stat label
-					span.case-label(data-case-anim)= stat.replace(/(\w{1})/, (all, first) => first.toUpperCase() )
+					span.case-label(data-anim)= stat.replace(/(\w{1})/, (all, first) => first.toUpperCase() )
 
 //- Array of Case Studies
 	------------------------------------------
@@ -180,15 +180,15 @@ section.brand-partnerships(data-nav='Brand Partnerships')
 					//- Case Study text and stats
 					.case-details: .case-txt
 						.case-type
-							p.sub-title(data-case-anim)= project.type
-							hr(data-case-anim)
+							p.sub-title(data-anim)= project.type
+							hr(data-anim)
 						.case-info
-							h2.title.crop(data-case-anim)= project.title
+							h2.title.crop(data-anim)= project.title
 						.case-meta
 							+metaValue(project.stats)
 
 						each paragraph in project.desc
-							p(data-case-anim)= paragraph
-						p(data-case-anim): a.link(href=project.cta, target='_blank') View On DeviantArt
+							p(data-anim)= paragraph
+						p(data-anim): a.link(href=project.cta, target='_blank') View On DeviantArt
 		hr.white
 
