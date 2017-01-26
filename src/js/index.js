@@ -23,7 +23,7 @@ requirejs([
 	'./sections/brand-alignment',
 	'./sections/brand-partnerships',
 	'./sections/influencers',
-	'./sections/about-us-v2',
+	'./sections/about-us',
 	'./sections/contact',
 	'QueryLoader2'
 ],

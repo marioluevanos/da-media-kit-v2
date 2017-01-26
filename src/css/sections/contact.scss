@@ -4,10 +4,10 @@ footer.contact {
 
 	position: relative;
 	min-height: 100vh;
-	padding: ($nav-height) 0;
+	padding: ($nav-height * 2) 0 ($nav-height * 2) 0;
 	background: $color-secondary-black;
 	color: white;
-	z-index: 1;
+	z-index: 2;
 
 	@include bp(0) {
 		padding: ($nav-height /2) 0 0;
@@ -15,7 +15,7 @@ footer.contact {
 
 	.sub-title {
 		color: $color-primary-green;
-		color: $color-light-gray;
+		// color: $color-primary-white;
 		@include bp(0) {
 			margin-bottom: 30px;
 		}
@@ -201,18 +201,21 @@ footer.contact {
 		display: block;
 		width: calc(100% - #{$label-min-width});
 
-		border: 1px solid  $color-primary-green;
-		background: $color-primary-green;
-		color: white;
+		color: $color-primary-green;
+		border: 1px solid $color-primary-green;
+		background: none;
+		color: $color-primary-green;
+
 		&:active,
 		&:focus {
 			color: $color-green-1;
 			border: 1px solid $color-primary-green;
 		}
 		&:hover {
-			color: $color-primary-green;
-			border: 1px solid $color-primary-green;
-			background: none;
+			color: white;
+			border: 1px solid  $color-primary-green;
+			background: $color-primary-green;
+
 		}
 		@include bp(0) {
 			float: none;

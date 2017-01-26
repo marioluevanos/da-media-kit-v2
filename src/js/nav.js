@@ -78,7 +78,8 @@ define([
 	var _scrollToSection = function(i, event) {
 		event.preventDefault();
 		var section = select('[data-nav="' + _menuList[i] + '"]');
-		var yPos = section.offsetTop;
+		var navHeight = select('#nav').clientHeight;
+		var yPos = section.className === 'contact' ? (section.offsetTop + navHeight) : section.offsetTop;
 		scrollTo(yPos, _scrollToDuration);
 	};
 
