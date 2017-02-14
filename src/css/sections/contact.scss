@@ -46,6 +46,13 @@ footer.contact {
 		}
 	}
 
+	.icon  {
+		float: left;
+		margin: 0 5px 0 0;
+		width: 16px;
+		height: 16px;
+		svg { fill: white; }
+	}
 
 	.txt {
 		padding: 0;
@@ -59,6 +66,10 @@ footer.contact {
 				list-style: none;
 			}
 		}
+	}
+
+	.txt a:hover svg {
+		fill: $color-primary-green;
 	}
 
 	.contact-form {
